@@ -20,6 +20,6 @@ This dashboard shows:
 -----
 Launching the Dash app locally: 
 
-`python3 index.py`
+`python3 app.py`
 
 Then visit http://127.0.0.1:8050 with your browser. 
