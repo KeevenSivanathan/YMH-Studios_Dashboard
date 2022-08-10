@@ -8,6 +8,7 @@ import pandas as pd
 df = pd.read_csv('ymh_studios.csv')
 
 app = dash.Dash(__name__,meta_tags=[{"name": "viewport", "content": "width=device-width"}])
+server = app.server
 
 plot_background_color = '#000000'
 paper_background_color = '#000000'
