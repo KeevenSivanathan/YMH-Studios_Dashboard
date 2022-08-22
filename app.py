@@ -17,7 +17,7 @@ colors = ['#0094C6']
 colors2 = ['#0094C6','#EA526F']
 colors3 = ['#F0C808','#EA526F','#0094C6']
 
-colors_line = ['#66c2a5','#8da0cb','#fc8d62','#e78ac3','#a6d854','#ffd92f']
+colors_line = ['#66c2a5','#8da0cb','#fc8d62','#e78ac3','#a6d854','#ffd92f','#EA526F']
 
 app.layout = html.Div([
 
@@ -173,29 +173,34 @@ def update_pieChart(channel_stats):
     channel_names = [i for i in df_stats['channel_name'].unique()]
 
     if channel_stats == 'Subscribers':
-        pie_data = [i for i in df_stats['subscribers']]
+        data = [i for i in df_stats['subscribers']]
 
     if channel_stats == 'Video Count':
-        pie_data = [i for i in df_stats['video_count']]
+        data = [i for i in df_stats['video_count']]
 
     if channel_stats == 'Views':
-        pie_data = [i for i in df_stats['views']]
+        data = [i for i in df_stats['views']]
 
-    fig = px.pie(df_stats,
-                 values = pie_data,
-                 labels = channel_names,
+
+    fig = px.bar(df_stats,
+                 y=channel_names,
+                 x=data,
+                 color_discrete_sequence=colors,
                  width=430, height=330,
-                 color_discrete_sequence=colors3,
-                 title = '{} Breakdown'.format(channel_stats),
-                 names = df_stats['channel_name'],
-                 category_orders={"channel": ["YMH Studios", "Tom Segura", "Christina P."]})
+                 title = '{} Breakdown'.format(channel_stats))
+
+
 
     fig.update_traces(hovertemplate='%{value}')
+    fig.update_yaxes(tickfont=dict(size=14), ticksuffix=" ")
+    fig.update_xaxes(tickfont=dict(size=14))
     fig.update_layout(
         plot_bgcolor=plot_background_color,
         paper_bgcolor=paper_background_color,
         legend=dict(title = 'Youtube Channel',yanchor="top",y=0.8,xanchor="right",x=1.5),
         title={'x': 0.5,'xanchor': 'center'},
+        xaxis=dict(title='{}'.format(channel_stats)),
+        yaxis=dict(title=''),
         title_font_color='#FCEFF9')
 
     return fig
