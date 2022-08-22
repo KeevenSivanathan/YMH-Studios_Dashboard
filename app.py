@@ -13,11 +13,10 @@ app = dash.Dash(__name__,meta_tags=[{"name": "viewport", "content": "width=devic
 plot_background_color = '#000000'
 paper_background_color = '#000000'
 
-colors = ['#0094C6']
-colors2 = ['#0094C6','#EA526F']
-colors3 = ['#F0C808','#EA526F','#0094C6']
-
-colors_line = ['#66c2a5','#8da0cb','#fc8d62','#e78ac3','#a6d854','#ffd92f','#EA526F']
+colors = ['#377eb8']
+colors2 = ['#e41a1c','#377eb8']
+colors3 = ['#e41a1c','#377eb8','#4daf4a']
+colors_line = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#e7298a']
 
 app.layout = html.Div([
 
@@ -163,7 +162,7 @@ def update_AllTime(value):
 
 
 
-#PIE CHART
+#YOUTUBE DATA BREAKDOWN
 @app.callback(
     Output('pie-chart','figure'),
     Input('channel_stats','value'))
@@ -274,6 +273,8 @@ def update_lineChart(statistic_option):
                       plot_bgcolor=plot_background_color,
                       paper_bgcolor=paper_background_color,
                       title={'x': 0.5,'xanchor': 'center'},
+                      xaxis=dict(showgrid=False),
+                      yaxis=dict(showgrid=False),
                       title_font_color='#FCEFF9')
 
     return fig
@@ -392,7 +393,7 @@ def update_text(value):
 
                html.P('{:,}'.format(total_YMH_ep),
                       style={'textAlign': 'center',
-                             'color': '#0094C6',
+                             'color': '#e41a1c',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -417,7 +418,7 @@ def update_text(value):
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#0094C6',
+                             'color': '#e41a1c',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -442,7 +443,7 @@ def update_text(value):
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#0094C6',
+                             'color': '#e41a1c',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -467,7 +468,7 @@ def update_text(value):
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#0094C6',
+                             'color': '#e41a1c',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
