@@ -1,5 +1,6 @@
 import dash
 from dash import dcc
+import dash_bootstrap_components as dbc
 from dash import html
 from dash.dependencies import Input, Output
 import plotly.express as px
@@ -7,7 +8,7 @@ import pandas as pd
 
 df = pd.read_csv('ymh_studios.csv')
 
-app = dash.Dash(__name__,meta_tags=[{"name": "viewport", "content": "width=device-width"}])
+app = dash.Dash(__name__,external_stylesheets =[dbc.themes.BOOTSTRAP])
 
 #Colors
 plot_background_color = '#FFFFFF'
@@ -15,7 +16,6 @@ paper_background_color = '#FFFFFF'
 colors = ['#0091D5']
 colors2 = ['#EA6A47','#0091D5']
 colors3 = ['#7E909A','#EA6A47','#0091D5']
-# colors_line = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#e7298a']
 colors_line = ['#EA6A47','#0091D5','#00CC66','#6B2737','#F1DB4B','#090C08','#DB5ABA']
 
 app.layout = html.Div([
