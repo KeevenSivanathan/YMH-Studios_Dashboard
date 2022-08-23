@@ -16,11 +16,11 @@
 .create_container2 {
   align-items: center;
   border-radius: 15px;
-  background-color: #000000;
+  background-color: #FFFFFF;
   margin: 10px;
   padding: 15px;
   position: relative;
-  box-shadow: 2px 2px 2px 2px #000000;
+  box-shadow: 2px 2px 2px 2px #FFFFFF;
 }
 
 .flex-display {
@@ -46,7 +46,7 @@
 }
 
 .Select-control{
-  border: 2px solid black;
+  border: 2px solid #1C4E80;
 }
 
 .has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
@@ -61,14 +61,14 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #000000 !important;
+  background: #1C4E80 !important;
   border-radius: 10px !important;
   display: block !important;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FFFFFF;
+  background: #F1F1F1;
 }
 
 /* Handle on hover */
@@ -118,7 +118,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #000000;
+  background-color: #F1F1F1;
 }
 
 header {
@@ -136,7 +136,7 @@ header {
   position: sticky;
   top: 0;
   z-index:1000;
-  background: #FFFFFF;
+  background: #1C4E80;
 }
 
 header h1 {
@@ -145,6 +145,7 @@ header h1 {
   margin: 0;
   padding: 0;
   font-size: inherit;
+  color: white;
 }
 
 

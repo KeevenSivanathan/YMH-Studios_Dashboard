@@ -9,14 +9,14 @@ df = pd.read_csv('ymh_studios.csv')
 
 app = dash.Dash(__name__,meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
-
-plot_background_color = '#000000'
-paper_background_color = '#000000'
-
-colors = ['#377eb8']
-colors2 = ['#e41a1c','#377eb8']
-colors3 = ['#e41a1c','#377eb8','#4daf4a']
-colors_line = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#e7298a']
+#Colors
+plot_background_color = '#FFFFFF'
+paper_background_color = '#FFFFFF'
+colors = ['#0091D5']
+colors2 = ['#EA6A47','#0091D5']
+colors3 = ['#7E909A','#EA6A47','#0091D5']
+# colors_line = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#e7298a']
+colors_line = ['#EA6A47','#0091D5','#00CC66','#6B2737','#F1DB4B','#090C08','#DB5ABA']
 
 app.layout = html.Div([
 
@@ -156,7 +156,7 @@ def update_AllTime(value):
         plot_bgcolor=plot_background_color,
         paper_bgcolor=paper_background_color,
         title={'x': 0.5,'xanchor': 'center'},
-        title_font_color='#FCEFF9')
+        title_font_color='#202020')
 
     return fig
 
@@ -200,7 +200,7 @@ def update_pieChart(channel_stats):
         title={'x': 0.5,'xanchor': 'center'},
         xaxis=dict(title='{}'.format(channel_stats)),
         yaxis=dict(title=''),
-        title_font_color='#FCEFF9')
+        title_font_color='#202020')
 
     return fig
 
@@ -229,7 +229,7 @@ def update_barChart1(value):
         xaxis=dict(title='Episode Count'),
         yaxis=dict(title=''),
         title={'x': 0.5,'xanchor': 'center'},
-        title_font_color='#FCEFF9'
+        title_font_color='#202020'
     )
 
     return fig
@@ -275,7 +275,7 @@ def update_lineChart(statistic_option):
                       title={'x': 0.5,'xanchor': 'center'},
                       xaxis=dict(showgrid=False),
                       yaxis=dict(showgrid=False),
-                      title_font_color='#FCEFF9')
+                      title_font_color='#202020')
 
     return fig
 
@@ -320,7 +320,7 @@ def update_barChart2(podcast_option):
         xaxis=dict(title='Episode Number'),
         yaxis=dict(title='Number of Views'),
         title={'x': 0.5,'xanchor': 'center'},
-        title_font_color='#FCEFF9')
+        title_font_color='#202020')
 
     return fig
 
@@ -370,7 +370,7 @@ def update_barChart3(value):
         plot_bgcolor=plot_background_color,
         paper_bgcolor=paper_background_color,
         title={'x': 0.5,'xanchor': 'center'},
-        title_font_color='#FCEFF9')
+        title_font_color='#202020')
 
     return fig
 
@@ -388,12 +388,12 @@ def update_text(value):
 
                html.H6(children = 'Total Episodes',
                        style = {'textAlign': 'center',
-                                'color': 'white'}
+                                'color': '#202020'}
                        ),
 
                html.P('{:,}'.format(total_YMH_ep),
                       style={'textAlign': 'center',
-                             'color': '#e41a1c',
+                             'color': '#EA6A47',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -413,12 +413,12 @@ def update_text(value):
 
                html.H6(children = 'Total Views',
                        style = {'textAlign': 'center',
-                                'color': 'white'}
+                                'color': '#202020'}
                        ),
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#e41a1c',
+                             'color': '#EA6A47',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -438,12 +438,12 @@ def update_text(value):
 
                html.H6(children = 'Total Likes',
                        style = {'textAlign': 'center',
-                                'color': 'white'}
+                                'color': '#202020'}
                        ),
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#e41a1c',
+                             'color': '#EA6A47',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }
@@ -463,12 +463,12 @@ def update_text(value):
 
                html.H6(children = 'Total Comments',
                        style = {'textAlign': 'center',
-                                'color': 'white'}
+                                'color': '#202020'}
                        ),
 
                html.P('{:,}'.format(result),
                       style={'textAlign': 'center',
-                             'color': '#e41a1c',
+                             'color': '#EA6A47',
                              'fontSize': 15,
                              'margin-top': '-10px'
                              }

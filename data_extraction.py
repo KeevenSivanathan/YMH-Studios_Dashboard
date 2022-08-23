@@ -248,6 +248,13 @@ ymh_podcast = podcasts_produced[podcasts_produced['playlist_title'] == 'YMH Podc
 josh_potter = podcasts_produced[podcasts_produced['playlist_title'] == 'The Josh Potter Show']['playlist_id'].iloc[0]
 classic_jeans = podcasts_produced[podcasts_produced['playlist_title'] == 'YMH Podcast - Classic Jeans']['playlist_id'].iloc[0]
 
+#Adding classic jeans episodes to YMH Episodes
+classicJeans_count = podcasts_produced[podcasts_produced['playlist_title'] == 'YMH Podcast - Classic Jeans']['item_count'].iloc[0]
+YMH_count = podcasts_produced[podcasts_produced['playlist_title'] == 'YMH Podcast']['item_count'].iloc[0]
+YMH_totalCount = classicJeans_count + YMH_count
+podcasts_produced = podcasts_produced.loc[podcasts_produced['item_count'] != 23]
+podcasts_produced = podcasts_produced.replace(YMH_count,YMH_totalCount)
+
 #Retrieving video id's of all videos in podcast playlist
 videoID_dannyBrown = get_video_id(youtube, danny_brown)
 videoID_tomTalks = get_video_id(youtube, tom_talks)
