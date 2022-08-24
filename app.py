@@ -8,9 +8,8 @@ import pandas as pd
 
 df = pd.read_csv('ymh_studios.csv')
 
-app = dash.Dash(__name__,external_stylesheets =[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__,external_stylesheets =[dbc.themes.BOOTSTRAP,dbc.icons.FONT_AWESOME])
 
-#Colors
 plot_background_color = '#FFFFFF'
 paper_background_color = '#FFFFFF'
 colors = ['#0091D5']
@@ -19,83 +18,81 @@ colors3 = ['#7E909A','#EA6A47','#0091D5']
 colors_line = ['#EA6A47','#0091D5','#00CC66','#6B2737','#F1DB4B','#090C08','#DB5ABA']
 
 app.layout = html.Div([
-
+    #HEADER
     html.Header([
         html.H1('yourmomsanalytics')
     ], id="sticky"),
 
-    # FIRST ROW
-    html.Div([
-
-        #TOP 10 BY YEAR
-        html.Div([
+    #BODY
+    #ROW 1
+    dbc.Row([
+        #ITEM 1
+        dbc.Col(
+            html.Div([
             #DROPDOWN
             dcc.Dropdown(id='year_option',options=[c for c in df['year_published'].unique()],
                          value='2022',clearable=False,
                          style=dict(width='80%',display='inline-block',verticalAlign="middle"),
                          className="dcc_compon"),
             #GRAPH
-            dcc.Graph(id='bar-chart3',config={'displayModeBar': 'hover'},style = {'height': '350px'})
-
-        ], className ='create_container2 four columns', style={'height': '400px'}),
-
-        #TOP 10 BY PODCAST
-        html.Div([
-            # DROPDOWN
+            dcc.Graph(id='bar-chart3',config={'displayModeBar': 'hover'})
+            ],className ='create_container twelve columns'),width = 4
+        ),
+        #ITEM 2
+        dbc.Col(
+            html.Div([
+            #DROPDOWN
             dcc.Dropdown(id='podcast_option',options=[i for i in df['podcast'].unique()],value='Tom Talks',
                          clearable=False,style=dict(width='80%',display='inline-block',verticalAlign="middle"),
                          className="dcc_compon"),
             # GRAPH
-            dcc.Graph(id='bar-chart2',config={'displayModeBar': 'hover'}, style = {'height': '350px'})
-
-        ], className='create_container2 four columns', style={'height': '400px'}),
-
-        #TOP 10 ALL-TIME
-        html.Div([
+            dcc.Graph(id='bar-chart2',config={'displayModeBar': 'hover'})
+            ],className ='create_container twelve columns'), width = 4
+        ),
+        #ITEM 3
+        dbc.Col(
+            html.Div([
             # GRAPH
-            dcc.Graph(id = 'allTime-chart',config = {'displayModeBar': 'hover'}, style = {'height': '350px'})
-
-        ], className='create_container2 four columns', style={'height': '400px'})
-
-    ],className="row flex-display"),
-
-    # SECOND ROW
-    html.Div([
-
-        #LINE CHART
-        html.Div([
+            dcc.Graph(id = 'allTime-chart',config = {'displayModeBar': 'hover'})
+            ],className ='create_container twelve columns'),width = 4
+        )
+    ],align="center"),
+    #ROW 2
+    dbc.Row([
+        #ITEM 1
+        dbc.Col(
+            html.Div([
             #DROPDOWN
             dcc.Dropdown(id='statistic_option',options=['Views','Likes','Comments'],
                          value="Views",clearable=False,
                          style=dict(width='40%',display='inline-block',verticalAlign="middle"),
                          className="dcc_compon"),
-
             #GRAPH
-            dcc.Graph(id="line-chart",config = {'displayModeBar': 'hover'}, style = {'height': '350px'})
-        ],className ='create_container2 twelve columns')
-
-    ], className="row flex-display"),
-
-    # THIRD ROW
-    html.Div([
-
-        #NO. OF EPISODES
-        html.Div([
+            dcc.Graph(id="line-chart",config = {'displayModeBar': 'hover'})
+            ],className ='create_container twelve columns')
+        )
+    ],align="center"),
+    #ROW 3
+    dbc.Row([
+        #ITEM 1
+        dbc.Col(
+            html.Div([
             #GRAPH
             dcc.Graph(id='bar-chart',config={'displayModeBar': 'hover'})
-
-        ], className ='create_container2 four columns', style={'height': '400px'}),
-
-        # TEXT
-        html.Div([
-            html.Div(id='text1'),
-            html.Div(id='text2'),
-            html.Div(id='text3'),
-            html.Div(id='text4')
-        ], className='create_container2 four columns', style={'height': '400px'}),
-
-        #PIE CHART
-        html.Div([
+            ],className ='create_container twelve columns'),width = 4
+        ),
+        #ITEM 2
+        dbc.Col(
+            html.Div([
+                html.Div(id='text1'),
+                html.Div(id='text2'),
+                html.Div(id='text3'),
+                html.Div(id='text4')
+            ],className ='create_container twelve columns'),width = 4
+        ),
+        #ITEM 3
+        dbc.Col(
+            html.Div([
             #DROPDOWN
             dcc.Dropdown(id='channel_stats',
                          options=['Subscribers', 'Video Count', 'Views'],
@@ -105,12 +102,29 @@ app.layout = html.Div([
 
             #GRAPH
             dcc.Graph(id='pie-chart',config={'displayModeBar': 'hover'})
+            ],className ='create_container twelve columns'),width = 4
+        )
+    ],align="center"),
 
-        ], className ='create_container2 four columns', style={'height': '400px'})
+    #FOOTER
+    html.Footer([
 
-    ], className="row flex-display")
+        html.Div([
+            html.A(html.I(className="fa-brands fa-github"), href='https://github.com/KeevenSivanathan'),
+            html.A(html.I(className="fa-solid fa-user-astronaut"), href='https://keevensivanathan.webflow.io/'),
 
-], id= "mainContainer", style={"display": "flex", "flex-direction": "column"})
+        ], className="footer-right"),
+
+        html.Div([
+            html.P([
+                dcc.Link('Back to Top',href = '#',className='link-1'),
+                html.A("YMH",href='https://www.youtube.com/c/YourMomsHousePodcast'),
+                html.A('Tom Segura',href = 'https://www.youtube.com/user/tomsegura'),
+                html.A('Christina P.',href = 'https://www.youtube.com/c/ChristinaP'),
+            ],className="footer-links")
+        ],className="footer-left")
+    ],className="footer-distributed")
+])
 
 ##### VISUALIZATIONS #####
 #TOP 10 ALL TIME - BAR CHART
@@ -186,7 +200,7 @@ def update_pieChart(channel_stats):
                  x=data,
                  color_discrete_sequence=colors,
                  width=430, height=330,
-                 title = '{} Breakdown'.format(channel_stats))
+                 title = 'YouTube Channel: {}'.format(channel_stats))
 
 
 
