@@ -56,7 +56,7 @@ app.layout = html.Div([
             dcc.Graph(id = 'allTime-chart',config = {'displayModeBar': 'hover'})
             ],className ='create_container twelve columns'),width = 4
         )
-    ],align="center"),
+    ],align="start"),
     #ROW 2
     dbc.Row([
         #ITEM 1
@@ -104,7 +104,7 @@ app.layout = html.Div([
             dcc.Graph(id='pie-chart',config={'displayModeBar': 'hover'})
             ],className ='create_container twelve columns'),width = 4
         )
-    ],align="center"),
+    ],align="start"),
 
     #FOOTER
     html.Footer([
@@ -147,7 +147,6 @@ def update_AllTime(value):
                  y = y_axis_labels,
                  color=data['podcast'],
                  custom_data=['podcast','video_title'],
-                 width=430, height=380,
                  color_discrete_sequence=colors2,
                  category_orders={"podcast": ["Your Mom's House", "2 Bears 1 Cave"]},
                  title = 'Top 10 All-Time Most Viewed Episodes',
@@ -199,7 +198,6 @@ def update_pieChart(channel_stats):
                  y=channel_names,
                  x=data,
                  color_discrete_sequence=colors,
-                 width=430, height=330,
                  title = 'YouTube Channel: {}'.format(channel_stats))
 
 
@@ -230,7 +228,6 @@ def update_barChart1(value):
                  y=df_epCount['playlist_title'],
                  x=df_epCount['item_count'],
                  color_discrete_sequence=colors,
-                 width=430, height=380,
                  title = 'Number of Episodes in each Podcast')
 
     fig.update_traces(hovertemplate='Count: %{x}')
@@ -265,7 +262,6 @@ def update_lineChart(statistic_option):
         color_discrete_sequence=colors_line,
         title = "Number of {} from 2016 to 2022".format(statistic_option),
         custom_data=['podcast','episode_num'],
-        width=1400, height=360,
         labels = {
             "date_published":'Date Published',
             "podcast":'Podcast'
@@ -313,7 +309,6 @@ def update_barChart2(podcast_option):
     fig = px.bar(result,
                  y=result['views'],
                  x=x_vals,
-                 width=420, height=335,
                  color_discrete_sequence=colors,
                  custom_data=['video_title'],
                  title = '{}: Top 10 Most Viewed Episodes'.format(podcast_option))
@@ -363,7 +358,6 @@ def update_barChart3(value):
                  color_discrete_sequence=colors2,
                  category_orders={"podcast": ["Your Mom's House", "2 Bears 1 Cave"]},
                  custom_data=['podcast','video_title'],
-                 width=420, height=335,
                  title = 'Top 10 Most Viewed Episodes in {}'.format(value),
                  labels={"views": 'Views',"y": '',"podcast": "Podcast"})
 
