@@ -10,6 +10,8 @@ df = pd.read_csv('ymh_studios.csv')
 
 app = dash.Dash(__name__,external_stylesheets =[dbc.themes.BOOTSTRAP,dbc.icons.FONT_AWESOME])
 
+server = app.server
+
 plot_background_color = '#FFFFFF'
 paper_background_color = '#FFFFFF'
 colors = ['#0091D5']
@@ -42,7 +44,7 @@ app.layout = html.Div([
         dbc.Col(
             html.Div([
             #DROPDOWN
-            dcc.Dropdown(id='podcast_option',options=[i for i in df['podcast'].unique()],value='Tom Talks',
+            dcc.Dropdown(id='podcast_option',options=[i for i in df['podcast'].unique()],value="Your Mom's House",
                          clearable=False,style=dict(width='80%',display='inline-block',verticalAlign="middle"),
                          className="dcc_compon"),
             # GRAPH

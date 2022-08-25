@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import re
 
-
 # Function to scrape channel stats
 def get_channel_data(service, channel_ids):
     data = []
