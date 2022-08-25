@@ -52,6 +52,10 @@ app.layout = html.Div([
         #ITEM 3
         dbc.Col(
             html.Div([
+            #DROPDOWN
+            dcc.Dropdown(id='allTime_option',options=['Views','Likes'],value='Views',
+                         clearable=False,style=dict(width='80%',display='inline-block',verticalAlign="middle"),
+                         className="dcc_compon"),
             # GRAPH
             dcc.Graph(id = 'allTime-chart',config = {'displayModeBar': 'hover'})
             ],className ='create_container twelve columns'),width = 4
@@ -130,12 +134,13 @@ app.layout = html.Div([
 #TOP 10 ALL TIME - BAR CHART
 @app.callback(
     Output('allTime-chart','figure'),
-    Input('channel_stats','value')
+    Input('allTime_option','value')
 )
 def update_AllTime(value):
     df = pd.read_csv('ymh_studios.csv')
-    data = pd.DataFrame(df.groupby(['views', 'podcast', 'year_published'])['video_title'].sum()).reset_index()
-    data = data.sort_values(['views'], ascending=False)
+    value = value.lower()
+    data = pd.DataFrame(df.groupby([value, 'podcast', 'year_published'])['video_title'].sum()).reset_index()
+    data = data.sort_values([value], ascending=False)
     data = data.head(10)
     data = data.iloc[::-1]
 
@@ -143,7 +148,7 @@ def update_AllTime(value):
     y_axis_labels.reverse()
 
     fig = px.bar(data,
-                 x=data['views'],
+                 x=data[value],
                  y = y_axis_labels,
                  color=data['podcast'],
                  custom_data=['podcast','video_title'],
