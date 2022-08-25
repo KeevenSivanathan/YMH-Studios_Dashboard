@@ -116,7 +116,7 @@ app.layout = html.Div([
         html.Div([
             html.A(html.I(className="fa-brands fa-github"), href='https://github.com/KeevenSivanathan'),
             html.A(html.I(className="fa-solid fa-user-astronaut"), href='https://keevensivanathan.webflow.io/'),
-
+            html.A(html.I(className="fa-brands fa-linkedin"), href='https://www.linkedin.com/in/ksivanathan/')
         ], className="footer-right"),
 
         html.Div([
