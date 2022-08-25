@@ -53,7 +53,7 @@ app.layout = html.Div([
         dbc.Col(
             html.Div([
             #DROPDOWN
-            dcc.Dropdown(id='allTime_option',options=['Views','Likes'],value='Views',
+            dcc.Dropdown(id='allTime_option',options=['Views','Likes','Comments'],value='Likes',
                          clearable=False,style=dict(width='80%',display='inline-block',verticalAlign="middle"),
                          className="dcc_compon"),
             # GRAPH
@@ -138,9 +138,9 @@ app.layout = html.Div([
 )
 def update_AllTime(value):
     df = pd.read_csv('ymh_studios.csv')
-    value = value.lower()
-    data = pd.DataFrame(df.groupby([value, 'podcast', 'year_published'])['video_title'].sum()).reset_index()
-    data = data.sort_values([value], ascending=False)
+    option = value.lower()
+    data = pd.DataFrame(df.groupby([option, 'podcast', 'year_published'])['video_title'].sum()).reset_index()
+    data = data.sort_values([option], ascending=False)
     data = data.head(10)
     data = data.iloc[::-1]
 
@@ -148,13 +148,13 @@ def update_AllTime(value):
     y_axis_labels.reverse()
 
     fig = px.bar(data,
-                 x=data[value],
+                 x=data[option],
                  y = y_axis_labels,
                  color=data['podcast'],
                  custom_data=['podcast','video_title'],
                  color_discrete_sequence=colors2,
                  category_orders={"podcast": ["Your Mom's House", "2 Bears 1 Cave"]},
-                 title = 'Top 10 All-Time Most Viewed Episodes',
+                 title = 'Top 10 Episodes of All-Time by {}'.format(value),
                  labels={"views": 'Views',"y": '',"podcast": "Podcast"})
 
     fig.update_traces(hovertemplate="<br>".join([
