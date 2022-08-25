@@ -185,7 +185,7 @@ def preprocess(df_1, df_2, df_3, df_4, df_5, df_6, df_7, df_8):
 
     return df_allPodcasts
 
-api_key = 'AIzaSyA_jfPRBDK9G19VT8RluNrqhx5ibDyDo-Y'
+api_key = ''
 youtube = build('youtube', 'v3', developerKey = api_key)
 channel_ids = ['UCYIgiXwJck_Pb5Nj-wIrsqg','UCuT0B27AxYqCPWMJixOOnMQ','UCi6roWLrNBmXCCF8URGQE3A']
 channel_data = pd.DataFrame(get_channel_data(youtube, channel_ids))
