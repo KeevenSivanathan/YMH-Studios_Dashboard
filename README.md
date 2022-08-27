@@ -16,7 +16,9 @@ This dashboard shows:
 ### References: 
 - https://www.youtube.com/watch?v=SwSbnmqk3zY&ab_channel=techTFQ
 - https://github.com/Mubeen31/Sales-scorecard-in-plotly-dash 
-
+-----
+Visit application:
+`yourmomsanalytics.herokuapp.com`
 -----
 Launching the Dash app locally: 
 
